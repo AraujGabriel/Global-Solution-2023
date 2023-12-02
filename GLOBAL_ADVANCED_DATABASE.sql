@@ -188,7 +188,8 @@ INSERT INTO Cargo VALUES (5, 'Psicólogo', 'Especialista em saúde mental e emoc
 
 -- Inserir Medicamento --
 INSERT INTO Medicamento VALUES (1, 'Paracetamol', 1);
-
+INSERT INTO Medicamento VALUES (4, 'Amoxilina', 2);
+INSERT INTO Medicamento VALUES (5, 'Loratadina',1);
 
 -- Inserir Convenio --
 INSERT INTO Convenio VALUES ('conv001', 'Plano Saúde A', 1234567890, 'planoa@email.com', 'senhaA');
@@ -224,11 +225,16 @@ INSERT INTO Paciente VALUES (5, 'Rodrigo Lima', '98712365487', '012', 9871236548
 
 -- Inserir Receita_completa --
 INSERT INTO Receita_completa VALUES ('1', '1', 1);
+INSERT INTO Receita_completa VALUES ('2', '2', 1);
+INSERT INTO Receita_completa VALUES ('3', '3', 1);
 
 
 -- Inserir Receita_parcial --
 INSERT INTO Receita_parcial VALUES ('1', 2.5, SYSTIMESTAMP, 3, TO_DATE('2023-11-30', 'YYYY-MM-DD'), TO_DATE('2023-12-15', 'YYYY-MM-DD'), 1, 1);
-
+INSERT INTO Receita_parcial VALUES ('6',5, SYSTIMESTAMP, 0, TO_DATE('2023-11-30', 'YYYY-MM-DD'), TO_DATE('2023-12-15', 'YYYY-MM-DD'), 4, 1);
+INSERT INTO Receita_parcial VALUES ('3',4,SYSTIMESTAMP, 1, TO_DATE('2023-11-30', 'YYYY-MM-DD'), TO_DATE('2023-12-15', 'YYYY-MM-DD'), 1, 2);
+INSERT INTO Receita_parcial VALUES ('4', 2.5, SYSTIMESTAMP, 2, TO_DATE('2023-11-30', 'YYYY-MM-DD'), TO_DATE('2023-12-15', 'YYYY-MM-DD'), 5, 2);
+INSERT INTO Receita_parcial VALUES ('5',  7 , SYSTIMESTAMP, 0, TO_DATE('2023-11-30', 'YYYY-MM-DD'), TO_DATE('2023-12-15', 'YYYY-MM-DD'), 4, 3);
 
 -- Inserir Evento_check_in --
 INSERT INTO Evento_check_in VALUES (TO_TIMESTAMP('2023-11-30 10:45:00', 'YYYY-MM-DD HH24:MI:SS'), 'EVT003', 1, 1);
@@ -688,6 +694,7 @@ select * from depende;
 ------------------------------- CONSULTAS COM CURSORES    ---------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------------------------------------
+SET SERVEROUTPUT ON
 
 -- Consulta 1 --
 
@@ -759,6 +766,14 @@ BEGIN
 END;
 /
 
+
+------------------------------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------------------------------
+-- Consulta 2 --------------------------------
+-----------------------------------------------------------------------------------------------------------------
+
+ 
 DECLARE
     v_id_paciente Paciente.id_paciente%TYPE;
     v_nome_paciente Paciente.nome%TYPE;
